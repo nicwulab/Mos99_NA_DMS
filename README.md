@@ -1,4 +1,3 @@
-# Mos99_NA
 # Mos99 NA Deep mutation scanning
 
 ## Dependencies ##
