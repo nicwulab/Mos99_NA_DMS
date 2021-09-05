@@ -45,12 +45,15 @@ def main():
     # split amplicon and mutation
     DF[['Amplicon','Mutation']] = DF.Mutation.str.split("|", n=1, expand=True)
     DF=DF.fillna(0)
+    DF['WT_plasmid' + '_norm'] = ((DF['WT_plasmid']) / DF.groupby('Amplicon')['WT_plasmid'].transform('sum'))
     DF['Rep1' + '_norm'] = ((DF['Rep1']) / DF.groupby('Amplicon')['Rep1'].transform('sum'))
     DF['Rep2' + '_norm'] = ((DF['Rep2']) / DF.groupby('Amplicon')['Rep2'].transform('sum'))
     DF['Input' + '_norm'] = ((DF['Input']) / DF.groupby('Amplicon')['Input'].transform('sum'))
+    DF['Rep1' + '_enri'] = DF['Rep1' + '_norm']/DF['Input' + '_norm']
+    DF['Rep2' + '_enri'] = DF['Rep2' + '_norm'] / DF['Input' + '_norm']
     # enri_ls=['R_1_DMS_RNA','R_2_DMS_RNA','R_3_DMS_RNA','Y_1_DMS_RNA','Y_2_DMS_RNA','Y_3_DMS_RNA','WT_1_DMS_RNA','WT_2_DMS_RNA','WT_3_DMS_RNA']
     # DF=cal_fitness(DF, enri_ls, 'HA_DMS_Plasmid')
-    DF.to_csv('result/Moss_fit_raw.csv')
+    DF.to_csv('result/Moss99_fit_raw.csv')
     # onemut_df = DF[~DF["Mutation"].str.contains('-')]
     # pos_df = onemut_df.Mutation.str.extract('(\d+)')
     # one_mut_sortdf = onemut_df.join(pos_df, lsuffix='_caller', rsuffix='_other') \
