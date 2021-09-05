@@ -35,13 +35,13 @@ def sum_mut(aa1,aa2):
     return sum ( aa1[i] != aa2[i] for i in range(len(aa1)) )
 
 
-def call_mutid(mutpep,refseq,shift,amplicon):
+def call_mutid(mutpep,refseq,shift):
   mut_id_ls = []
   assert (len(mutpep) == len(refseq))
   for n in range(len(mutpep)):
     pos = n+shift
     if refseq[n]!=mutpep[n]:
-       mut_id_ls.append(amplicon+'|'+refseq[n]+str(pos)+mutpep[n])
+       mut_id_ls.append(refseq[n]+str(pos)+mutpep[n])
   return mut_id_ls
 
 def Call_Amp_ID(record_id):
@@ -64,21 +64,27 @@ def cal_fastq_dic(fastq,ref):
         amp= Call_Amp_ID(record.id)
         if amp == 'Amp1':
             amp_ref = ref[243:435] #amplicon 1 start and end
+            shift_dna = 244
             shift=82
         elif amp == 'Amp2':
             amp_ref = ref[435:627] #amplicon 2 start and end
+            shift_dna = 436
             shift=146
         elif amp == 'Amp3':
             amp_ref = ref[627:819]  #amplicon 3 start and end
+            shift_dna = 628
             shift=210
         elif amp == 'Amp4':
             amp_ref = ref[819:1011] #amplicon 2 start and end
+            shift_dna = 820
             shift=274
         elif amp == 'Amp5':
             amp_ref = ref[1011:1203]  #amplicon 3 start and end
+            shift_dna = 1012
             shift=338
         elif amp == 'Amp6':
             amp_ref = ref[1203:1395]  #amplicon 3 start and end
+            shift_dna = 1204
             shift=402
         else:
             error_read +=1
@@ -93,11 +99,14 @@ def cal_fastq_dic(fastq,ref):
                 mut_id_ls.append(mut_id)
             else:
                 if sum_mut(mut_aa, amp_ref_aa) == 0:
-                    mut_id = amp + '|' + 'slient'
+                    call_mut_id = call_mutid(seq, amp_ref, shift_dna)
+                    mut_ids="-".join(sorted(call_mut_id, key=lambda x:int(x[1:-1])))
+                    mut_id = amp + '|' + 'silent'+'_'+mut_ids
                     mut_id_ls.append(mut_id)
                 else:
-                    call_mut_id = call_mutid(mut_aa, amp_ref_aa,shift,amp)
-                    mut_id = "-".join(sorted(call_mut_id, key=lambda x:int(x[6:-1])))
+                    call_mut_id = call_mutid(mut_aa, amp_ref_aa,shift)
+                    mut_ids = "-".join(sorted(call_mut_id, key=lambda x:int(x[1:-1])))
+                    mut_id = amp + '|' + mut_ids
                     mut_id_ls.append(mut_id)
     print('no amplicon tag, a total of %s reads were exclued ' %error_read)
     print('deletion or insertion, a total of %s reads were excluded' %len_error)
