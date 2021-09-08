@@ -25,14 +25,14 @@ plot_cross_validate <- function(t_join, graphname){
                legend.text=element_text(size=textsize,face="bold"),
                legend.position='right') +
      scale_fill_manual(values=c('black'),drop=FALSE) +
-     labs(x=expression(bold('fitness (this study)')),y=expression(bold('fitness (Wang et al. 2020)')))
+     labs(x=expression(bold('fitness (this study)')),y=expression(bold('fitness (Wang et al. 2021)')))
   ggsave(graphname, p, height=2, width=2)
   }
 
 t_all  <- read_csv('result/Mos99_fit.csv') %>%
             mutate(fit_dms=Fitness) %>%
             rename(mut=Mutation)
-t_epi  <- read_tsv('data/Mos99_single_mut.tsv') %>%
+t_epi  <- read_tsv('data/Mos99_single_mut_Wang_et_al.tsv') %>%
             mutate(fit=log10(fit))
 t_join <- inner_join(t_all, t_epi)
 print (t_join$mut)
