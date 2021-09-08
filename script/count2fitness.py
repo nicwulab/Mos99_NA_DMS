@@ -49,7 +49,7 @@ def main():
     # only one mutation & filter low input
     onemut_df = DF[(~DF["Mutation"].str.contains('-')) & (DF['Input'] >= 10)]
     # filter out WT high error mutants
-    onemut_df = onemut_df[onemut_df['Input_norm'] > onemut_df['WT_plasmid_norm'] * 8]
+    onemut_df = onemut_df[onemut_df['Input_norm'] > onemut_df['WT_plasmid_norm'] * 6]
     #calculate fitness
     fit_ls=['Rep1','Rep2']
     for c in fit_ls:
