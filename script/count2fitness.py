@@ -43,28 +43,25 @@ def main():
     # split amplicon and mutation
     DF[['Amplicon','Mutation']] = DF.Mutation.str.split("|", n=1, expand=True)
     DF=DF.fillna(0)
-    norm_ls=['WT_plasmid','Input','Rep1','Rep2']
-    for col in norm_ls:
-
-        DF=norm_amp(DF,col)
-        if col == 'Rep1':
-            DF=cal_fit(DF,col+'_norm','Input_norm')
-
-        elif col == 'Rep2':
-            DF = cal_fit(DF, col+'_norm', 'Input_norm')
-
-
-    #DF.to_csv('result/Mos99_fit_raw.csv')
-    # classify mutation type(silent;missense;nonsense)
-    DF['mutation_type'] = 'missense'
-    DF['mutation_type'][DF.Mutation.str.contains('silent')] = 'silent'
-    DF['mutation_type'][(~DF.Mutation.str.contains('silent')) & DF.Mutation.str.contains('_')] = 'nonsense'
-    DF['mutation_type'][DF.Mutation.str.contains('WT')] = 'WT'
-
+    #normalization
+    norm_ls = ['WT_plasmid', 'Input']
+    for col in norm_ls:DF = norm_amp(DF, col)
     # only one mutation & filter low input
-    onemut_df = DF[(~DF["Mutation"].str.contains('-')) & (DF['Input'] > 10)]
+    onemut_df = DF[(~DF["Mutation"].str.contains('-')) & (DF['Input'] >= 10)]
     # filter out WT high error mutants
     onemut_df = onemut_df[onemut_df['Input_norm'] > onemut_df['WT_plasmid_norm'] * 8]
+    #calculate fitness
+    fit_ls=['Rep1','Rep2']
+    for c in fit_ls:
+        onemut_df=norm_amp(onemut_df,c)
+        onemut_df=cal_fit(onemut_df,c+'_norm','Input_norm')
+    cal_mean(onemut_df,'Fitness','Rep1_norm_fitness','Rep2_norm_fitness')
+    #DF.to_csv('result/Mos99_fit_raw.csv')
+    # classify mutation type(silent;missense;nonsense)
+    onemut_df['mutation_type'] = 'missense'
+    onemut_df['mutation_type'][onemut_df.Mutation.str.contains('silent')] = 'silent'
+    onemut_df['mutation_type'][(~onemut_df.Mutation.str.contains('silent')) & onemut_df.Mutation.str.contains('_')] = 'nonsense'
+
     pos_df = onemut_df.Mutation.str.extract('(\d+)')
     one_mut_sortdf = onemut_df.join(pos_df, lsuffix='_caller', rsuffix='_other') \
         .set_index(0) \
