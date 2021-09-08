@@ -30,7 +30,7 @@ plot_cross_validate <- function(t_join, graphname){
   }
 
 t_all  <- read_csv('result/Mos99_fit.csv') %>%
-            mutate(fit_dms=fitness) %>%
+            mutate(fit_dms=Fitness) %>%
             rename(mut=Mutation)
 t_epi  <- read_tsv('data/Mos99_single_mut.tsv') %>%
             mutate(fit=log10(fit))

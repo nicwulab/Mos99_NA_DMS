@@ -63,7 +63,7 @@ plot_replicate_cor <- function(t_all, graphname){
   }
 
 t_all <- read_csv('result/Mos99_fit.csv') %>%
-	   mutate(fit=fitness) %>%
+	   mutate(fit=Fitness) %>%
 	   filter(!grepl('Amp', Mutation)) %>%
 	   filter(!grepl('WT', Mutation)) %>%
            filter(!grepl('-', Mutation))
