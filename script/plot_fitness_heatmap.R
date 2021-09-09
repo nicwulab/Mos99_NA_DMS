@@ -41,10 +41,10 @@ plot_fitness_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi)
                                        frame.linewidth = 1,
                                        ticks = TRUE,
                                        ticks.colour = "black",
-                                       barwidth = 0.5, barheight = 6, title="Fitness")) +
+                                       barwidth = 0.5, barheight = 6, title="fitness")) +
           geom_point(data=WTresibox, aes(x=x, y=y), color='black', size=0.2) +
           xlab("") +
-          ylab("Amino acid")
+          ylab("amino acid")
   }
 
 aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
