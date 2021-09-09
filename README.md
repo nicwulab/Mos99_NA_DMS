@@ -8,10 +8,17 @@
 * [cutadapt](https://cutadapt.readthedocs.io/en/stable/)
 * [pandas](https://pandas.pydata.org/)
 * [biopython](https://github.com/biopython/biopython)
+* [DSSP](https://ssbio.readthedocs.io/en/latest/instructions/dssp.html)
 ## Installation ##
-Install everything dependencies by conda:
+Install dependencies by conda:
 
 ```conda create -n NA -c bioconda -c anaconda python=3.9 seqtk flash biopython cutadapt snakemake```
+
+Install DSSP by brew (Mac OS X):
+
+```
+brew install dssp
+```
 
 Before running the analysis, do:
 
