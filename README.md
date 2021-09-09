@@ -16,9 +16,7 @@ Install dependencies by conda:
 
 Install DSSP by brew (Mac OS X):
 
-```
-brew install dssp
-```
+```brew install dssp```
 
 Before running the analysis, do:
 
