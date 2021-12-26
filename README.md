@@ -1,7 +1,7 @@
-# Mos99 NA Deep mutation scanning
+## Mos99 NA Deep mutation scanning
 
-## Dependencies ##
-* python=3.9
+### Dependencies ###
+* [python](https://www.python.org/) (version 3.9)
 * [snakemake](https://snakemake.readthedocs.io/en/stable/)
 * [flash](https://github.com/dstreett/FLASH2)
 * [seqtk](https://github.com/lh3/seqtk)
@@ -9,18 +9,27 @@
 * [pandas](https://pandas.pydata.org/)
 * [biopython](https://github.com/biopython/biopython)
 * [DSSP](https://ssbio.readthedocs.io/en/latest/instructions/dssp.html)
-## Installation ##
-Install dependencies by conda:
 
-```conda create -n NA -c bioconda -c anaconda python=3.9 seqtk flash biopython cutadapt snakemake```
+### Input files ###
+* All raw reads in fastq format should be placed in fastq/
+* 
 
-Install DSSP by brew (Mac OS X):
-
-```brew install dssp```
-
-Before running the analysis, do:
-
+### Installation ###
+Install dependencies by conda:   
 ```
-source activate NA(for Mac)
-```
-## Steps ##
+conda create -n NA -c bioconda -c anaconda -c conda-forge -c salilab \
+  python=3.9 \
+  seqtk \
+  flash \
+  biopython \
+  cutadapt \
+  snakemake \
+  dssp
+```   
+
+### Data analysis ###
+1. Activate conda environment:   
+``source activate NA``
+
+2. Using UMI to correct sequencing errors:   
+``python script/Dedup_UMI.py fastq NNNNNNN 0.8 2``
