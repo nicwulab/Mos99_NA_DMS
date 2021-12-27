@@ -13,7 +13,7 @@
 * All raw reads in fastq format should be placed in fastq/
 * 
 
-### Installation ###
+### Dependencies installation ###
 1. Install dependencies by conda:   
 ```
 conda create -n NA -c bioconda -c anaconda -c conda-forge \
@@ -22,7 +22,8 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
   flash \
   biopython \
   cutadapt \
-  snakemake
+  snakemake \
+  prody
 ```   
 
 2. Activate conda environment:   
