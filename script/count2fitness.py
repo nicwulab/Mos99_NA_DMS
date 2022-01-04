@@ -8,11 +8,11 @@ def norm_amp(count_DF,col_name):
     count_DF[col_name+'_norm'] = ((count_DF[col_name]) / count_DF.groupby('Amplicon')[col_name].transform('sum'))
     return count_DF
 def cal_fit(count_DF,column_name,input):
-    count_DF[column_name+'_enri'] = (count_DF[column_name])/(count_DF[input])
+    count_DF[column_name+'_enri'] = np.log10((count_DF[column_name])/(count_DF[input]))
     silent_DF=count_DF[count_DF.Mutation.str.contains('silent')]
     silent_mean=silent_DF[column_name+'_enri'].mean()
     silent_median = silent_DF[column_name + '_enri'].median()
-    count_DF[column_name + '_enri']=np.log10(count_DF[column_name + '_enri']/silent_mean)
+    count_DF[column_name + '_enri']=(count_DF[column_name + '_enri']-silent_mean)
     count_DF=count_DF.rename(columns={column_name + '_enri':column_name + '_fitness'})
     return count_DF
 def cal_mean(count_DF,mean,column1,column2):
