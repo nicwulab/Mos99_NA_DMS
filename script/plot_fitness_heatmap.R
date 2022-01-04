@@ -12,7 +12,7 @@ library(stringr)
 require(cowplot)
 
 plot_fitness_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi){
-  textsize <- 5.3
+  textsize <- 5
   fitness_table <- fitness_table %>%
                      filter(Pos >= start_resi & Pos <= end_resi)
   WTresibox     <- WTresibox %>%
@@ -35,16 +35,16 @@ plot_fitness_heatmap <- function(fitness_table, WTresibox, start_resi, end_resi)
                 axis.title=element_text(size=7,face="bold"),
                 axis.line = element_line(colour = 'black', size = 0),
                 panel.border = element_rect(colour = "black", fill=NA, size=1)) +
-          guides(fill = guide_colorbar(title.theme=element_text(size=textsize,face="bold",colour='black',hjust=0.5),
-                                       label.theme=element_text(size=textsize,face="bold",colour='black'),
+          guides(fill = guide_colorbar(title.theme=element_text(size=7,face="bold",colour='black',hjust=0.5),
+                                       label.theme=element_text(size=7,face="bold",colour='black'),
                                        frame.colour="black",
                                        frame.linewidth = 1,
                                        ticks = TRUE,
                                        ticks.colour = "black",
-                                       barwidth = 0.5, barheight = 6, title="Fitness")) +
+                                       barwidth = 0.5, barheight = 6, title="fitness")) +
           geom_point(data=WTresibox, aes(x=x, y=y), color='black', size=0.2) +
           xlab("") +
-          ylab("Amino acid")
+          ylab("amino acid")
   }
 
 aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
