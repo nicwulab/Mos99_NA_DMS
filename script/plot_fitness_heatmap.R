@@ -58,9 +58,8 @@ fitness_table <- read_csv('result/Mos99_fit.csv') %>%
   mutate(resi=factor(resi,levels=unique(resi))) %>%
   complete(resi, aa) %>%
   mutate(Pos=str_sub(resi,2,-1)) %>%
-  mutate(Pos=factor(Pos,levels=as.character(seq(82,465)))) %>%
-  arrange(Pos) %>%
   mutate(Pos=as.numeric(as.character(Pos))) %>%
+  arrange(Pos) %>%
   mutate(Fitness=case_when(str_sub(resi,1,1)==aa ~ 0, TRUE ~ Fitness)) %>%
   mutate(Mutation=paste(resi,aa,sep='')) %>%
   select(Mutation, resi, Pos, aa, Fitness)

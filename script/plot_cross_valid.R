@@ -26,7 +26,7 @@ plot_cross_validate <- function(t_join, graphname){
                legend.position='right') +
      scale_fill_manual(values=c('black'),drop=FALSE) +
      labs(x=expression(bold('fitness (this study)')),y=expression(bold('fitness (Wang et al. 2021)')))
-  ggsave(graphname, p, height=2, width=2)
+  ggsave(graphname, p, height=1.7, width=1.7)
   }
 
 t_all  <- read_csv('result/Mos99_fit.csv') %>%
