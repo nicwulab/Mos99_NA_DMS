@@ -11,7 +11,11 @@
 
 ### Input files ###
 * All raw reads in fastq format should be placed in fastq/
-* 
+* [./data/ASA.table](./data/ASA.table):
+* [./result/Mos99_mean_mut_fit.tsv](./result/Mos99_mean_mut_fit.tsv)
+* [./data/sites_info.tsv](./data/sites_info.tsv)
+* [./PDB/Mos99_WT_NA_monomer.pdb](./PDB/Mos99_WT_NA_monomer.pdb)
+* [./PDB/Mos99_WT_NA_tetramer.pdb](./PDB/Mos99_WT_NA_tetramer.pdb)
 
 ### Dependencies installation ###
 1. Install dependencies by conda:   
@@ -46,6 +50,16 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
     - Input file: [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
     - Output file: [./result/Mos99_mean_mut_fit.tsv](./result/Mos99_mean_mut_fit.tsv)
 
+2. Assign residue type and calculate RSA
+``python3 script/pos_type_analysis.py``
+    - Input files:
+      - [./data/ASA.table](./data/ASA.table)
+      - [./result/Mos99_mean_mut_fit.tsv](./result/Mos99_mean_mut_fit.tsv)
+      - [./data/sites_info.tsv](./data/sites_info.tsv)
+      - [./PDB/Mos99_WT_NA_monomer.pdb](./PDB/Mos99_WT_NA_monomer.pdb)
+      - [./PDB/Mos99_WT_NA_tetramer.pdb](./PDB/Mos99_WT_NA_tetramer.pdb)
+    - Output file: [./result/position_type_vs_fit.tsv](./result/position_type_vs_fit.tsv)
+
 ### Plotting ###
 1. Plots for checking data quality   
 ``Rscript script/plot_QC.R``
@@ -65,3 +79,11 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
 ``Rscript script/plot_fitness_heatmap.R``
     - Input file: [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
     - Output file: [./graph/Mos99_fit_heatmap.png](./graph/Mos99_fit_heatmap.png)
+
+4. Compare RSA and fit across residue types
+``Rscript script/plot_pos_type_analysis.R``
+    - Input file: [./result/position_type_vs_fit.tsv](./result/position_type_vs_fit.tsv)
+    - Output files:
+      - [./graph/fit_vs_RSA.png](./graph/fit_vs_RSA.png)
+      - [./graph/position_type_vs_RSA.png](./graph/position_type_vs_RSA.png)
+      - [./graph/position_type_vs_fit.png](./graph/position_type_vs_fit.png)

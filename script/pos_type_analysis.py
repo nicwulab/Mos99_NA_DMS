@@ -54,14 +54,17 @@ def classify_pos_type(pos, RSA_monomer, delta_RSA, site_dict):
     if int(pos) in site_dict[site]:
       pos_type.append(site)
   if len(pos_type) == 0:
-    if RSA_monomer < 0.05:
+    if RSA_monomer < 0.2:
       pos_type.append('buried')
-    elif delta_RSA > 0.5*RSA_monomer:
-      pos_type.append('interface')
+    else:
+      if delta_RSA > 0.5*RSA_monomer:
+        pos_type.append('interface')
+      else:
+        pos_type.append('exposed')
   if len(pos_type) > 1:
     print ('position %s belongs to more than 1 classification (%s)' % (pos, ', '.join(pos_type)))
   if len(pos_type) == 0:
-    pos_type.append('exposed')
+    print ('position %s belongs to 0 classification' % (pos))
   pos_type = '-'.join(pos_type)
   return pos_type
 
@@ -80,8 +83,8 @@ def compile_out(outfile, RSA_dict_monomer, RSA_dict_tetramer, fit_dict, position
 
 def main():
   outfile   = 'result/position_type_vs_fit.tsv'
-  dssp_monomer  = dssp_dict_from_pdb_file('PDB/N2_NA_monomer.pdb', DSSP='mkdssp')[0]
-  dssp_tetramer = dssp_dict_from_pdb_file('PDB/N2_NA_tetramer.pdb', DSSP='mkdssp')[0]
+  dssp_monomer  = dssp_dict_from_pdb_file('PDB/Mos99_WT_NA_monomer.pdb', DSSP='mkdssp')[0]
+  dssp_tetramer = dssp_dict_from_pdb_file('PDB/Mos99_WT_NA_tetramer.pdb', DSSP='mkdssp')[0]
   file_asa  = 'data/ASA.table'
   dict_asa  = reading_ASA(file_asa)
   fit_file  = 'result/Mos99_mean_mut_fit.tsv'
