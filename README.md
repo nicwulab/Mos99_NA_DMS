@@ -41,27 +41,27 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
     - Output file: [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
 
 ### Data analysis ###
-1. Compute mutational tolerance for each residue
+1. Compute mutational tolerance for each residue   
 ``python3 script/Mean_mut_fit_per_resi.py``
     - Input file: [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
     - Output file: [./result/Mos99_mean_mut_fit.tsv](./result/Mos99_mean_mut_fit.tsv)
 
 ### Plotting ###
-1. Plots for checking data quality
+1. Plots for checking data quality   
 ``Rscript script/plot_QC.R``
     - Input file: [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
     - Output file:
       - [./graph/Mos99_sil_non_mis.png](./graph/Mos99_sil_non_mis.png)
       - [./graph/Mos99_rep_cor.png](./graph/Mos99_rep_cor.png)
 
-2. Comparing the data in this study with our previous study ([Wang et al. 2021](https://elifesciences.org/articles/72516))
+2. Comparing the data in this study with our previous study ([Wang et al. 2021](https://elifesciences.org/articles/72516))   
 ``Rscript script/plot_cross_valid.R``
     - Input files:
       - [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
       - [./data/Mos99_single_mut_Wang_et_al.tsv](./data/Mos99_single_mut_Wang_et_al.tsv)
     - Output file: [./graph/DMS_cross_validate.png](./graph/DMS_cross_validate.png)
 
-3. Heatmap of mutational fitness
+3. Heatmap of mutational fitness   
 ``Rscript script/plot_fitness_heatmap.R``
     - Input file: [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
     - Output file: [./graph/Mos99_fit_heatmap.png](./graph/Mos99_fit_heatmap.png)
