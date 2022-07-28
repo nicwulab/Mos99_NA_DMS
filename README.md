@@ -126,9 +126,20 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
       - [./graph/fit_vs_MSA_transformer.png](./graph/fit_vs_MSA_transformer.png)
       - [./graph/fit_vs_foldX_ddG.png](./graph/fit_vs_foldX_ddG.png)
 
-8. Plot 
+8. Compare distribution of fitness effects between naturally observed vs unobserved mutations   
 ``Rscript script/plot_fit_conserved.R``
     - Input files:
       - [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
       - [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv)
     - Output file: [./graph/fit_dist_nat_vs_unnat.png](./graph/fit_dist_nat_vs_unnat.png)
+
+9. Plot sequence logos for residues in cluster 2   
+``python3 script/cluster2_seqlogo.py``
+    - Input files:
+      - [./Fasta/Human_H3N2_NA_2020.aln](./Fasta/Human_H3N2_NA_2020.aln)
+      - [./Fasta/Avian_N2_NA.aln](./Fasta/Avian_N2_NA.aln)
+      - [./Fasta/NA_subtypes.aln](./Fasta/NA_subtypes.aln)
+    - Output files:
+      - [./graph/seqlogo_cluster2_N2.png](./graph/seqlogo_cluster2_N2.png)
+      - [./graph/seqlogo_cluster2_avian_N2.png](./graph/seqlogo_cluster2_avian_N2.png)
+      - [./graph/seqlogo_cluster2_all.png](./graph/seqlogo_cluster2_all.png)
