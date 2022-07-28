@@ -12,7 +12,9 @@
 ### Input files ###
 * All raw reads in fastq format should be placed in fastq/
 * [./Fasta/Mos99_NA.pep](./Fasta/Mos99_NA.pep): Mos99 NA protein sequence.
-* [./Fasta/Human_H3N2_NA_2020.aln](./Fasta/Human_H3N2_NA_2020.aln): Full-length NA protein sequences from human H3N2 downloaded from [GISAID](https://www.gisaid.org/).
+* [./Fasta/Human_H3N2_NA_2020.aln](./Fasta/Human_H3N2_NA_2020.aln): Full-length NA protein sequences from human H3N2 strains (downloaded from [GISAID](https://www.gisaid.org/)).
+* [./Fasta/Avian_N2_NA.aln](./Fasta/Avian_N2_NA.aln): Full-length NA protein sequences from Avian N2 strains (downloaded from [GISAID](https://www.gisaid.org/)).
+* [./Fasta/NA_subtypes.aln](./Fasta/NA_subtypes.aln): Full-length representative NA protein sequences from different NA subtypes (downloaded from [GISAID](https://www.gisaid.org/)).
 * [./data/ASA.table](./data/ASA.table): Amino acid solvent accessibility (ASA) from [Tien et al. 2013](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0080635).
 * [./data/sites_info.tsv](./data/sites_info.tsv): Antigenic regions and acive site residues are defined by [Colman et al. 1983](https://www.nature.com/articles/303041a0) and [McAuley et al. 2019](https://www.frontiersin.org/articles/10.3389/fmicb.2019.00039/full), respectively.
 * [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv): Stability effect was predicted using [FoldX](https://academic.oup.com/bioinformatics/article/35/20/4168/5381539) and natural fitness was inferred using [MSA Transformer](https://www.biorxiv.org/content/10.1101/2021.02.12.430858v1).
