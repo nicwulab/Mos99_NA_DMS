@@ -11,9 +11,11 @@
 
 ### Input files ###
 * All raw reads in fastq format should be placed in fastq/
+* [./Fasta/Mos99_NA.pep](./Fasta/Mos99_NA.pep): Mos99 NA protein sequence.
+* [./Fasta/Human_H3N2_NA_2020.aln](./Fasta/Human_H3N2_NA_2020.aln): Full-length NA protein sequences from human H3N2 downloaded from [GISAID](https://www.gisaid.org/).
 * [./data/ASA.table](./data/ASA.table): Amino acid solvent accessibility (ASA) from [Tien et al. 2013](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0080635).
 * [./data/sites_info.tsv](./data/sites_info.tsv): Antigenic regions and acive site residues are defined by [Colman et al. 1983](https://www.nature.com/articles/303041a0) and [McAuley et al. 2019](https://www.frontiersin.org/articles/10.3389/fmicb.2019.00039/full), respectively.
-* [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv): Stability effect was predicted using [FoldX](https://academic.oup.com/bioinformatics/article/35/20/4168/5381539) and natural fitness was inferred using [MSA Transformer](https://www.biorxiv.org/content/10.1101/2021.02.12.430858v1)
+* [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv): Stability effect was predicted using [FoldX](https://academic.oup.com/bioinformatics/article/35/20/4168/5381539) and natural fitness was inferred using [MSA Transformer](https://www.biorxiv.org/content/10.1101/2021.02.12.430858v1).
 * [./PDB/Mos99_WT_NA_monomer.pdb](./PDB/Mos99_WT_NA_monomer.pdb)
 * [./PDB/Mos99_WT_NA_tetramer.pdb](./PDB/Mos99_WT_NA_tetramer.pdb)
 * [./PDB/Mos99_WT_sialic_acid_final.pdb](./PDB/Mos99_WT_sialic_acid_final.pdb)
@@ -66,6 +68,15 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
     - Input file: [./PDB/Mos99_WT_sialic_acid_final.pdb](./PDB/Mos99_WT_sialic_acid_final.pdb)
     - Output file: [./result/Dist_to_active_site.tsv](./result/Dist_to_active_site.tsv)
 
+4. Calculate natural mutation frequency   
+``python3 script/natural_mut_analysis.py``
+    - Input files:
+      - [./Fasta/Mos99_NA.pep](./Fasta/Mos99_NA.pep)
+      - [./Fasta/Human_H3N2_NA_2020.aln](./Fasta/Human_H3N2_NA_2020.aln)
+      - [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
+    - Output file:
+      - [./result/N2_mutation_freq.tsv](./result/N2_mutation_freq.tsv)
+
 ### Plotting ###
 1. Plots for checking data quality   
 ``Rscript script/plot_QC.R``
@@ -101,7 +112,12 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
       - [./result/Dist_to_active_site.tsv](./result/Dist_to_active_site.tsv)
     - Output file: [./graph/fit_vs_dist.png](./graph/fit_vs_dist.png)
 
-6. Plot DMS fitness vs predicted stability effect using [FoldX](https://academic.oup.com/bioinformatics/article/35/20/4168/5381539) and predicted fitness using [MSA Transformer](https://www.biorxiv.org/content/10.1101/2021.02.12.430858v1)   
+6. Plot correlation between fitness and natural mutation frequency   
+``Rscript script/plot_natural_mut_fit.R``
+    - Input file: [./result/N2_mutation_freq.tsv](./result/N2_mutation_freq.tsv)
+    - Ouput file: [./graph/natural_mut_freq_fit.png](./graph/natural_mut_freq_fit.png)
+
+7. Plot DMS fitness vs predicted stability effect using [FoldX](https://academic.oup.com/bioinformatics/article/35/20/4168/5381539) and predicted fitness using [MSA Transformer](https://www.biorxiv.org/content/10.1101/2021.02.12.430858v1)   
 ``Rscript script/plot_fit_vs_predict.R``
     - Input files:
       - [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
