@@ -11,12 +11,12 @@
 
 ### Input files ###
 * All raw reads in fastq format should be placed in fastq/
-* [./data/ASA.table](./data/ASA.table):
-* [./result/Mos99_mean_mut_fit.tsv](./result/Mos99_mean_mut_fit.tsv)
-* [./data/sites_info.tsv](./data/sites_info.tsv)
+* [./data/ASA.table](./data/ASA.table): Amino acid solvent accessibility (ASA) from [Tien et al. 2013](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0080635).
+* [./data/sites_info.tsv](./data/sites_info.tsv): Antigenic regions and acive site residues are defined by [Colman et al. 1983](https://www.nature.com/articles/303041a0) and [McAuley et al. 2019](https://www.frontiersin.org/articles/10.3389/fmicb.2019.00039/full), respectively.
+* [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv): Stability effect was predicted using [FoldX](https://academic.oup.com/bioinformatics/article/35/20/4168/5381539) and natural fitness was inferred using [MSA Transformer](https://www.biorxiv.org/content/10.1101/2021.02.12.430858v1)
 * [./PDB/Mos99_WT_NA_monomer.pdb](./PDB/Mos99_WT_NA_monomer.pdb)
 * [./PDB/Mos99_WT_NA_tetramer.pdb](./PDB/Mos99_WT_NA_tetramer.pdb)
-* [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv)
+* [./PDB/Mos99_WT_sialic_acid_final.pdb](./PDB/Mos99_WT_sialic_acid_final.pdb)
 
 ### Dependencies installation ###
 1. Install dependencies by conda:   
