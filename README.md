@@ -125,3 +125,10 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
     - Output files:
       - [./graph/fit_vs_MSA_transformer.png](./graph/fit_vs_MSA_transformer.png)
       - [./graph/fit_vs_foldX_ddG.png](./graph/fit_vs_foldX_ddG.png)
+
+8. Plot 
+``Rscript script/plot_fit_conserved.R``
+    - Input files:
+      - [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
+      - [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv)
+    - Output file: [./graph/fit_dist_nat_vs_unnat.png](./graph/fit_dist_nat_vs_unnat.png)
