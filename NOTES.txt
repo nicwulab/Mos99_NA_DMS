@@ -1,6 +1,0 @@
-In data/sites_info.tsv:
-Antigenic site is defined as described in PMID: 6188957
-Active site is defined as described in PMID: 30761095
-
-In script/DSSP_analysis.py:
-Amino acid solvent accessibility (ASA) is defined as the theoretical value in PMID: 24278298
