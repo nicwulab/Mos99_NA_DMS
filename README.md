@@ -1,4 +1,4 @@
-## Mos99 NA Deep mutation scanning
+## Deep mutation scanning of human influenza H3N2 NA
 
 ### Dependencies ###
 * [python](https://www.python.org/) (version 3.9)
