@@ -11,7 +11,7 @@ This README describes the analysis of the deep mutational scanning experiment fo
 * [biopython](https://github.com/biopython/biopython)
 
 ### Input files ###
-* All raw reads in fastq format should be placed in fastq/
+* All raw reads in fastq format from NIH SRA database [BioProject PRJNA857746](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA857746) should be placed in fastq/
 * [./Fasta/Mos99_NA.pep](./Fasta/Mos99_NA.pep): Mos99 NA protein sequence.
 * [./Fasta/Human_H3N2_NA_2020.aln](./Fasta/Human_H3N2_NA_2020.aln): Full-length NA protein sequences from human H3N2 strains (downloaded from [GISAID](https://www.gisaid.org/)).
 * [./Fasta/Avian_N2_NA.aln](./Fasta/Avian_N2_NA.aln): Full-length NA protein sequences from Avian N2 strains (downloaded from [GISAID](https://www.gisaid.org/)).
