@@ -17,8 +17,8 @@ require(cowplot)
 
 plot_RSA_vs_fit <- function(fit_table, graphname){
   textsize <- 7
-  #palette  <- c(brewer.pal(9,"Set1"))
-  palette <- qualpal(n = 5, list(h = c(0, 360), s = c(0.4, 0.6), l = c(0.5, 0.85)))$hex
+  palette  <- c(brewer.pal(9,"Set1"))
+  #palette <- qualpal(n = 5, list(h = c(0, 360), s = c(0.4, 0.6), l = c(0.5, 0.85)))$hex
   p <- ggplot(fit_table,aes(x=RSA_tetramer*100, y=fit, color=type)) +
          geom_point(size=0.5, pch=16, alpha=0.8) +
          theme_cowplot(12) +
