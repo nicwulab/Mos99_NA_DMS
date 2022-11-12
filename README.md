@@ -127,7 +127,8 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
       - [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv)
     - Output files:
       - [./graph/fit_vs_MSA_transformer.png](./graph/fit_vs_MSA_transformer.png)
-      - [./graph/fit_vs_foldX_ddG.png](./graph/fit_vs_foldX_ddG.png)
+      - [./graph/fit_vs_foldX_ddG_monomer.png](./graph/fit_vs_foldX_ddG_monomer.png)
+      - [./graph/fit_vs_foldX_ddG_tetramer.png](./graph/fit_vs_foldX_ddG_tetramer.png)
 
 8. Compare distribution of fitness effects between naturally observed vs unobserved mutations   
 ``Rscript script/plot_fit_conserved.R``
