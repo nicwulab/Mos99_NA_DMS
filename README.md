@@ -113,7 +113,9 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
     - Input files:
       - [./result/position_type_vs_fit.tsv](./result/position_type_vs_fit.tsv)
       - [./result/Dist_to_active_site.tsv](./result/Dist_to_active_site.tsv)
-    - Output file: [./graph/fit_vs_dist.png](./graph/fit_vs_dist.png)
+    - Output file:
+      - [./graph/fit_vs_dist.png](./graph/fit_vs_dist.png)
+      - [./graph/fit_vs_dist_short.png](./graph/fit_vs_dist_short.png)
 
 6. Plot correlation between fitness and natural mutation frequency   
 ``Rscript script/plot_natural_mut_fit.R``
@@ -134,6 +136,7 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
 8. Compare distribution of fitness effects between naturally observed vs unobserved mutations   
 ``Rscript script/plot_fit_conserved.R``
     - Input files:
+      - [./result/N2_mutation_freq.tsv](./result/N2_mutation_freq.tsv)
       - [./result/Mos99_fit.csv](./result/Mos99_fit.csv)
       - [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv)
     - Output file: [./graph/fit_dist_nat_vs_unnat.png](./graph/fit_dist_nat_vs_unnat.png)

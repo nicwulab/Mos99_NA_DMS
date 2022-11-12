@@ -40,7 +40,13 @@ plot_dist_vs_fit <- function(df, graphname){
 fit  <- read_tsv('result/position_type_vs_fit.tsv')
 dist <- read_tsv('result/Dist_to_active_site.tsv')
 df  <- merge(x=fit, y=dist, by='pos', all=TRUE)
+df_short <- df %>%
+              filter(dist_to_SIA<15)
+print(head(df_short))
 plot_dist_vs_fit(df, 'graph/fit_vs_dist.png')
+plot_dist_vs_fit(df_short, 'graph/fit_vs_dist_short.png')
 
 print (paste('Pearson correlation between RSA and fitness: ', cor(df$dist, df$fit, method="pearson"), sep=''))
 print (paste('Spearman correlation between RSA and fitness: ', cor(df$dist, df$fit, method="spearman"), sep=''))
+print (paste('Pearson correlation between RSA and fitness (short dist): ', cor(df_short$dist, df_short$fit, method="pearson"), sep=''))
+print (paste('Spearman correlation between RSA and fitness (short dist): ', cor(df_short$dist, df_short$fit, method="spearman"), sep=''))

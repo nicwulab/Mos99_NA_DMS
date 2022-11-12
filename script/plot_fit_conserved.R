@@ -37,13 +37,15 @@ plot_fitness_hist <- function(t, graphname){
   ggsave(graphname, p, height=1.7, width=2, dpi=600)
   }
 
+natural_muts <- read_tsv('result/N2_mutation_freq.tsv')
+natural_muts <- unique(natural_muts$mut)
 fit  <- read_csv('result/Mos99_fit.csv') %>%
           rename(mut=Mutation)
 pred <- read_csv('data/foldx_msa_transformer.csv') %>%
           inner_join(fit, by='mut') %>%
           mutate(pos=as.numeric(str_sub(mut, 2, -2))) %>%
-          mutate(stab=ifelse(ddG_foldx <= 0, 'stable', 'unstabile')) %>%
-          mutate(natural=ifelse(!is.na(msa_transformer), 'observed', 'unobserved'))
+          mutate(stab=ifelse(ddG_tetramer <= 0, 'stable', 'unstabile')) %>%
+          mutate(natural=ifelse(mut %in% natural_muts, 'observed', 'unobserved'))
 obs <- filter(pred, natural=='observed') %>% nrow(.)
 unobs <- filter(pred, natural=='unobserved') %>% nrow(.)
 highfit_obs   <- filter(pred, Fitness >= 0) %>% filter(natural=='observed') %>% nrow(.)
