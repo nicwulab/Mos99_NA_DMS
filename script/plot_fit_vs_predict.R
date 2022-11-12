@@ -39,7 +39,7 @@ plot_MSA_transformer <- function(t, graphname){
   ggsave(graphname, p, height=1.5, width=1.5, dpi=600)
   }
 
-plot_ddG <- function(t, graphname, form){
+plot_ddG <- function(t, graphname, form, w, h){
   textsize <- 7
   if (form=='tetramer'){
     t <- rename(t, ddG=ddG_tetramer)
@@ -65,7 +65,7 @@ plot_ddG <- function(t, graphname, form){
                legend.position='none') +
          #scale_x_continuous(breaks=c(-15,-10,-5,0,5), labels=c('-15','-10','-5','0','5')) +
          labs(x=expression(bold('FoldX ddG\nprediction (kcal/mol)')),y=expression(bold('fitness')))
-  ggsave(graphname, p, height=1.5, width=1.5, dpi=600)
+  ggsave(graphname, p, height=h, width=w, dpi=600)
   }
 
 ceiling_1 <- function(x){
@@ -87,8 +87,8 @@ pred_ceil <- pred %>%
           mutate(ddG_tetramer=mapply(ceiling_1, ddG_tetramer)) %>%
           mutate(ddG_monomer=mapply(ceiling_2, ddG_monomer))
 plot_MSA_transformer(pred, 'graph/fit_vs_MSA_transformer.png')
-plot_ddG(pred_ceil, 'graph/fit_vs_foldX_ddG_tetramer.png', 'tetramer')
-plot_ddG(pred_ceil, 'graph/fit_vs_foldX_ddG_monomer.png', 'monomer')
+plot_ddG(pred_ceil, 'graph/fit_vs_foldX_ddG_tetramer.png', 'tetramer', 1.5, 1.5)
+plot_ddG(pred_ceil, 'graph/fit_vs_foldX_ddG_monomer.png', 'monomer', 2, 2)
 print (paste('Pearson correlation between fitness and MSA: ',
        cor(pred$msa_transformer, pred$Fitness, method="pearson",use="complete.obs"), sep=''))
 print (paste('Spearman correlation between fitness and MSA: ',
