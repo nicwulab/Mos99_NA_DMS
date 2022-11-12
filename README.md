@@ -127,7 +127,7 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
       - [./data/foldx_msa_transformer.csv](./data/foldx_msa_transformer.csv)
       - [./result/N2_mutation_freq.tsv](./result/N2_mutation_freq.tsv)
     - Output files:
-      - [./graph/fit_vs_MSA_transformer.png](./graph/fit_vs_MSA_transformer.png)
+      - [./graph/fit_vs_MSA_transformer_all.png](./graph/fit_vs_MSA_transformer_all.png)
       - [./graph/fit_vs_foldX_ddG_monomer.png](./graph/fit_vs_foldX_ddG_monomer.png)
       - [./graph/fit_vs_foldX_ddG_tetramer.png](./graph/fit_vs_foldX_ddG_tetramer.png)
 
