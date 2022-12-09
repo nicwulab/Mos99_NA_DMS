@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/403374443.svg)](https://zenodo.org/badge/latestdoi/403374443)
+
 ## Deep mutation scanning of human influenza H3N2 NA
 This README describes the analysis of the deep mutational scanning experiment for H3N2 A/Moscow/10/1999 (Mos99) neuraminidase (NA).
 
