@@ -37,7 +37,7 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
 ```   
 
 2. Activate conda environment:   
-``source activate NA``
+``conda activate NA``
 
 ### Calculating mutational fitness from sequencing data ###
 1. Using UMI to correct sequencing errors:   
