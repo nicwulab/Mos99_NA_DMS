@@ -46,7 +46,7 @@ conda create -n NA -c bioconda -c anaconda -c conda-forge \
 ``python3 script/Dedup_UMI.py fastq NNNNNNN 0.8 2``
 
 2. Counting mutations:   
-``snakemake -s Mos99_pipeline.smk -j 10``
+``snakemake -s script/Mos99_pipeline.smk -j 10``
 
 3. Convert counts to fitness:   
 ``python3 script/count2fitness.py``
